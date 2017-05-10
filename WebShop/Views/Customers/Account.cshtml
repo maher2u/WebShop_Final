@@ -1,0 +1,49 @@
+﻿@model WebShop.Models.Customer
+@{
+    ViewBag.Title = "Account";
+}
+
+<div class="container">
+    <h4>Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+    <a class="btn btn-sm btn-warning" role="button" href="/customers/logout">Log out</a>
+    <h4>Orders</h4>
+    <hr />
+    @foreach (var item in ViewBag.Orders)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                Order ID: @item.ID
+            </dt>
+            <dd>
+                <form action="/cart/order" method="get">
+                    @Html.AntiForgeryToken()
+                    <input name="cartID" type="hidden" value="@item.ID">
+                    <button class="btn btn-sm btn-default">Details</button>
+                </form>
+            </dd>
+        </dl>
+    }
+</div>
+
+

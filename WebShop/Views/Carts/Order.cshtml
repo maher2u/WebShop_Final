@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebShop.Models.Order>
+@{
+    ViewBag.Title = "Shopping cart";
+    ViewBag.TotalPrice = 0;
+}
+
+<div class="container">
+    <h2>Shopping cart</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Price For Piece
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            decimal Price = item.product.Price * item.Amount;
+            ViewBag.TotalPrice = ViewBag.TotalPrice + Price;
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Price
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="strong">
+                Total
+            </td>
+            <td class="strong">
+                @ViewBag.TotalPrice
+            </td>
+        </tr>
+    </table>
+</div>
+
+

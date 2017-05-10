@@ -1,12 +1,23 @@
 ﻿body {
+    background-image: url('Watches/010.jpg');
     padding-top: 50px;
     padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.whiteBackground{
+    background-color:#fff;
+    opacity:0.9;
+    padding:2em;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+  
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +32,124 @@ input,
 select,
 textarea {
     max-width: 280px;
+    
+}
+.navbar-default {
+    background-color:#6b97ad;
+    border-color: #6b97ad;
+   
+   }
+.navbar-default .navbar-nav > li > a {
+    color: #f5f5f5;
+}
+.log-size {
+    width: 90px;
+    height: 47px;
+    margin-top: 2px;
+   }
+footer {
+    
+    font-family:sans-serif;
+    background-color:#6b97ad;
+    color:white;
+    padding:10px;
+    text-align:center;
+   
+}
+.imgContainer{
+    float:left;
+}
+
+.home .jewellery {
+        background-image: url('Images/Jewellery/_12975215.png');
+            }
+
+.home .watches {
+        background-image: url('Images/Watches/jy002064e_1.jpg');
+        
+    }
+
+.home{
+    display: flex;
+    justify-content: space-between;
+}
+
+.home a{
+    position: relative;
+    display: block;
+    width: calc(50% - 20px);
+    height: 400px;
+    text-align: center;
+    background-size: 90% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px #6b97ad solid;
+}
+
+.home a:hover{
+    border: 2px #ff6a00 solid;
+}
+
+.home a:hover > span{
+    background-color: #ff6a00;
+}
+
+.home a span{
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #6b97ad;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+}
+.ul .li{
+    width: calc(33% - 30px);
+    list-style-type: none;
+    background-color: #558693;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 50px;
+    position: relative;
+    float:right;
+    margin-left:33px;
+}
+.photo{
+    height: 200px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    margin-left:25px;
+    margin-right:25px;
+}
+
+.photo img{
+    height: 100%;
+    margin-left:25px;
+    margin-right:25px;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p {
+    color: white;
+}
+
+.about{
+    max-width: 100%;
+    height: auto!important;
+    width: auto!important;
+    margin-left:100px;
+       
+}
+#yourContainer {
+    width: 500px;
+    height: 170px;
+}
+
+#yourContainer img {
+    max-width: 100%;
+    max-height: 100%;
 }

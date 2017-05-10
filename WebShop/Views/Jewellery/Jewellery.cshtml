@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebShop.Models.Product>
+
+@{
+    ViewBag.Title = "Jewellery";
+}
+<aside></aside>
+<div class="container">
+    <h2 style="color:#c10ce0;">Jewellery</h2>
+    <div class="ul">
+        @foreach (var item in Model)
+            {
+
+            <div class="li">
+                <h4>
+
+                    @Html.DisplayFor(modelItem => item.Name)
+                </h4>
+                <h3>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </h3>
+                <div><img src="@item.Image" class="photo" /></div>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </p>
+                <form method="post" action="/carts/add">
+                    @Html.AntiForgeryToken()
+                    <input name="productID" type="hidden" value="@Html.DisplayFor(modelItem => item.ID)">
+                    <input name="cartID" type="hidden" value="@ViewBag.CartID">
+                    <div class="form-group">
+                        <input name="amount" type="text" class="form-control aantal" value="1" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default add">Add to Cart</button>
+
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+    </div>
+
+

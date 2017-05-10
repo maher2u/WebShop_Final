@@ -1,15 +1,24 @@
-﻿<!DOCTYPE html>
+﻿@*@{
+    if (Session["customer"] != null)
+    {
+        string firstname = ((WebShop.Models.Customer)Session["customer"]).FirstName;
+        string lastname = ((WebShop.Models.Customer)Session["customer"]).LastName;
+        ViewBag.Name = firstname + " " + lastname;
+    }*@
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/creative.css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,23 +26,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/Content/Images/Logo img/webshop-222.png" class="log-size logo" />
+                </a>
+</div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <ul class="nav navbar-nav" >
+                    <li>@Html.ActionLink("Products", "Index", "ChoosingProducts")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if  (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Editing Jewellery", "Index", "Jewellery")</li>
+                        <li>@Html.ActionLink("Editing Watches", "Index", "Watches")</li>
+                    }
+                    @if (Session["customer"] != null)
+                    {
+                        <li>@Html.ActionLink("Shopping cart", "Order", "carts")</li>
+                        
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content whiteBackground">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+        <footer class="navbar navbar-fixed-bottom">
+            <p>&copy; @DateTime.Now.Year - Mohamad Maher Koniehle</p>
         </footer>
     </div>
 
